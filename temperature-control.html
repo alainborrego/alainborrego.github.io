@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Temperature-Controlled Cooling System | Alain Borrego</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Alain Borrego</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">Embedded Systems • Controls • Prototyping</p>
+
+            <h2>Temperature-Controlled Cooling System</h2>
+
+            <h3>Arduino-based closed-loop temperature monitoring and fan control</h3>
+
+            <p>
+                I designed and programmed a temperature-controlled cooling system
+                that continuously monitors ambient temperature using an NTC thermistor,
+                displays the temperature and fan state on a 16x2 LCD, and automatically
+                controls a DC fan through an L293D motor driver.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Project Overview</h2>
+
+        <p>
+            The goal of this project was to create a self-contained system capable of
+            monitoring temperature in real time and automatically activating cooling
+            when the measured temperature became too high.
+        </p>
+
+        <p>
+            The fan turns on at 28°C and remains on until the temperature falls to 27°C.
+            This one-degree difference prevents the fan from rapidly switching on and off
+            near a single temperature threshold.
+        </p>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>System Architecture</h2>
+
+        <p>
+            The thermistor forms a voltage divider whose output is measured by the
+            Arduino's analog input. The ADC reading is converted to voltage, thermistor
+            resistance, and finally temperature in degrees Celsius.
+        </p>
+
+        <pre>
+NTC Thermistor
+      ↓
+Voltage Divider
+      ↓
+Arduino A0
+      ↓
+ADC Reading
+      ↓
+Temperature Conversion
+      ↓
+Hysteresis Control
+      ↓
+Arduino D9
+      ↓
+L293D Motor Driver
+      ↓
+DC Fan
+
+Arduino ─────────────→ 16x2 LCD
+                       Temperature
+                       Fan Status
+        </pre>
+
+    </section>
+
+
+    <section>
+
+        <h2>Hardware</h2>
+
+        <p>
+            The system was built using the following components:
+        </p>
+
+        <p>
+            Arduino Uno • NTC Thermistor • 5.1 kΩ Resistor • 16x2 LCD •
+            10 kΩ Potentiometer • L293D Motor Driver • DC Motor • Fan Blade •
+            Breadboard Power Supply • Breadboard • Jumper Wires
+        </p>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>Software and Control Logic</h2>
+
+        <p>
+            The software was written in Arduino C/C++. I separated the temperature
+            conversion into its own function so the main loop could remain focused on
+            reading the sensor, updating the display, and controlling the fan.
+        </p>
+
+        <p>
+            The control logic uses hysteresis:
+        </p>
+
+        <pre>
+Temperature ≥ 28°C
+        ↓
+      Fan ON
+
+27°C < Temperature < 28°C
+        ↓
+Keep previous fan state
+
+Temperature ≤ 27°C
+        ↓
+      Fan OFF
+        </pre>
+
+        <p>
+            The thermistor conversion uses the measured analog voltage to calculate
+            thermistor resistance, then applies the thermistor Beta model to determine
+            temperature in Celsius.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h2>Engineering Challenge: LCD Interference</h2>
+
+        <p>
+            During testing, the LCD displayed corrupted characters whenever the DC motor
+            began spinning. The temperature sensing and control logic were functioning,
+            but motor startup was disturbing the power supplied to the LCD.
+        </p>
+
+        <p>
+            I isolated the problem by testing the Arduino, display, motor driver, and motor
+            connections separately. The issue only appeared when the motor operated from
+            the same power source as the logic electronics.
+        </p>
+
+        <p>
+            I resolved the problem by separating the motor power supply from the Arduino
+            logic supply while maintaining a common ground between the two systems.
+            After the change, the fan operated normally while the LCD remained stable.
+        </p>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>Result</h2>
+
+        <p>
+            The completed system continuously displays the measured temperature and fan
+            status. When the temperature reaches the activation threshold, the Arduino
+            commands the L293D motor driver to power the fan. The fan remains active until
+            the temperature falls below the lower threshold.
+        </p>
+
+        <p>
+            This project gave me hands-on experience with analog sensing, ADC conversion,
+            embedded programming, motor control, LCD interfacing, circuit debugging,
+            and power-system troubleshooting.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h2>Future Improvements</h2>
+
+        <p>
+            Future versions could use a compact enclosure, a dedicated PCB, adjustable
+            temperature thresholds, variable fan-speed control using PWM, and improved
+            temperature sensing accuracy.
+        </p>
+
+    </section>
+
+
+    <section class="about">
+
+        <h2>Source Code</h2>
+
+        <p>
+            The Arduino source code and additional project documentation will be available
+            through the project's GitHub repository.
+        </p>
+
+    </section>
+
+
+    <footer>
+        © 2026 Alain Borrego
+    </footer>
+
+</body>
+
+</html>
