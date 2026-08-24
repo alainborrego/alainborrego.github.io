@@ -13,6 +13,7 @@
 <body>
 
     <header>
+
         <h1>Alain Borrego</h1>
 
         <nav>
@@ -21,14 +22,17 @@
             <a href="index.html#about">About</a>
             <a href="index.html#contact">Contact</a>
         </nav>
+
     </header>
 
 
     <section class="project-cover">
 
-        <img src="IMG_0701.jpg"
-             alt="Arduino temperature-controlled cooling system prototype"
-             class="cover-image">
+        <img
+            src="IMG_0701.jpg"
+            alt="Arduino temperature-controlled cooling system prototype"
+            class="cover-image"
+        >
 
         <div class="cover-content">
 
@@ -36,7 +40,9 @@
                 Embedded Systems • Controls • Prototyping
             </p>
 
-            <h1>Temperature-Controlled Cooling System</h1>
+            <h1>
+                Temperature-Controlled Cooling System
+            </h1>
 
             <h2>
                 Arduino-based temperature monitoring and fan control
@@ -115,9 +121,10 @@ Arduino ─────────────→ 16x2 LCD
         <h2>Hardware</h2>
 
         <p>
-            Arduino Uno • NTC Thermistor • 5.1 kΩ Resistor • 16x2 LCD •
-            10 kΩ Potentiometer • L293D Motor Driver • DC Motor • Fan Blade •
-            Breadboard Power Supply • Breadboard • Jumper Wires
+            Arduino Uno • NTC Thermistor • 5.1 kΩ Resistor •
+            16x2 LCD • 10 kΩ Potentiometer • L293D Motor Driver •
+            DC Motor • Fan Blade • Breadboard Power Supply •
+            Breadboard • Jumper Wires
         </p>
 
     </section>
@@ -129,8 +136,8 @@ Arduino ─────────────→ 16x2 LCD
 
         <p>
             The software was written in Arduino C/C++. I separated the temperature
-            conversion into its own function so the main loop could remain focused on
-            reading the sensor, updating the display, and controlling the fan.
+            conversion into its own function so the main loop could remain focused
+            on reading the sensor, updating the display, and controlling the fan.
         </p>
 
         <p>
@@ -142,9 +149,11 @@ Temperature ≥ 28°C
         ↓
       Fan ON
 
+
 27°C < Temperature < 28°C
         ↓
 Keep previous fan state
+
 
 Temperature ≤ 27°C
         ↓
@@ -165,21 +174,22 @@ Temperature ≤ 27°C
         <h2>Engineering Challenge: LCD Interference</h2>
 
         <p>
-            During testing, the LCD displayed corrupted characters whenever the DC motor
-            began spinning. The temperature sensing and control logic were functioning,
-            but motor startup was disturbing the power supplied to the LCD.
+            During testing, the LCD displayed corrupted characters whenever the
+            DC motor began spinning. The temperature sensing and control logic were
+            functioning, but motor startup was disturbing the power supplied to the LCD.
         </p>
 
         <p>
-            I isolated the problem by testing the Arduino, display, motor driver, and motor
-            connections separately. The issue only appeared when the motor operated from
-            the same power source as the logic electronics.
+            I isolated the problem by testing the Arduino, display, motor driver,
+            and motor connections separately. The issue only appeared when the motor
+            operated from the same power source as the logic electronics.
         </p>
 
         <p>
-            I resolved the problem by separating the motor power supply from the Arduino
-            logic supply while maintaining a common ground between the two systems.
-            After the change, the fan operated normally while the LCD remained stable.
+            I resolved the problem by separating the motor power supply from the
+            Arduino logic supply while maintaining a common ground between the two
+            systems. After the change, the fan operated normally while the LCD
+            remained stable.
         </p>
 
     </section>
@@ -190,16 +200,16 @@ Temperature ≤ 27°C
         <h2>Result</h2>
 
         <p>
-            The completed system continuously displays the measured temperature and fan
-            status. When the temperature reaches the activation threshold, the Arduino
-            commands the L293D motor driver to power the fan. The fan remains active until
-            the temperature falls below the lower threshold.
+            The completed system continuously displays the measured temperature
+            and fan status. When the temperature reaches the activation threshold,
+            the Arduino commands the L293D motor driver to power the fan.
+            The fan remains active until the temperature falls below the lower threshold.
         </p>
 
         <p>
-            This project gave me hands-on experience with analog sensing, ADC conversion,
-            embedded programming, motor control, LCD interfacing, circuit debugging,
-            and power-system troubleshooting.
+            This project gave me hands-on experience with analog sensing,
+            ADC conversion, embedded programming, motor control, LCD interfacing,
+            circuit debugging, and power-system troubleshooting.
         </p>
 
     </section>
@@ -210,9 +220,9 @@ Temperature ≤ 27°C
         <h2>Future Improvements</h2>
 
         <p>
-            Future versions could use a compact enclosure, a dedicated PCB, adjustable
-            temperature thresholds, variable fan-speed control using PWM, and improved
-            temperature sensing accuracy.
+            Future versions could use a compact enclosure, a dedicated PCB,
+            adjustable temperature thresholds, variable fan-speed control using PWM,
+            and improved temperature sensing accuracy.
         </p>
 
     </section>
@@ -223,8 +233,8 @@ Temperature ≤ 27°C
         <h2>Source Code</h2>
 
         <p>
-            The Arduino source code and additional project documentation will be available
-            through the project's GitHub repository.
+            The Arduino source code and additional project documentation will be
+            available through the project's GitHub repository.
         </p>
 
     </section>
