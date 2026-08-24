@@ -1,7 +1,3 @@
-/* =========================
-   GLOBAL
-   ========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -19,19 +15,15 @@ body {
 }
 
 
-/* =========================
-   HEADER / NAVIGATION
-   ========================= */
+/* HEADER */
 
 header {
     background: white;
     border-bottom: 1px solid #ddd;
     padding: 18px 8%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: sticky;
     top: 0;
     z-index: 100;
@@ -54,9 +46,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   HOMEPAGE HERO
-   ========================= */
+/* HOMEPAGE HERO */
 
 .hero {
     min-height: 70vh;
@@ -94,23 +84,16 @@ nav a:hover {
 }
 
 
-/* =========================
-   BUTTONS
-   ========================= */
+/* BUTTONS */
 
 .button {
     display: inline-block;
-
     margin-top: 15px;
     margin-right: 10px;
-
     padding: 12px 18px;
-
     border: 1px solid #1f1f1f;
-
     text-decoration: none;
     color: #1f1f1f;
-
     font-weight: 700;
 }
 
@@ -120,9 +103,7 @@ nav a:hover {
 }
 
 
-/* =========================
-   GENERAL SECTIONS
-   ========================= */
+/* GENERAL SECTIONS */
 
 section {
     padding: 70px 8%;
@@ -134,9 +115,7 @@ section h2 {
 }
 
 
-/* =========================
-   PROJECT CARDS
-   ========================= */
+/* PROJECT CARDS */
 
 .projects-grid {
     display: grid;
@@ -147,11 +126,8 @@ section h2 {
 .project-card {
     background: white;
     border: 1px solid #ddd;
-
     padding: 25px;
-
     min-height: 310px;
-
     display: flex;
     flex-direction: column;
 }
@@ -173,7 +149,6 @@ section h2 {
 
 .project-card a {
     margin-top: 15px;
-
     text-decoration: none;
     font-weight: 700;
     color: #1f1f1f;
@@ -184,9 +159,7 @@ section h2 {
 }
 
 
-/* =========================
-   ABOUT
-   ========================= */
+/* ABOUT */
 
 .about {
     background: white;
@@ -198,23 +171,17 @@ section h2 {
 }
 
 
-/* =========================
-   CONTACT
-   ========================= */
+/* CONTACT */
 
 .contact-links a {
     margin-right: 18px;
-
     text-decoration: none;
     color: #1f1f1f;
-
     font-weight: 700;
 }
 
 
-/* =========================
-   PROJECT COVER
-   ========================= */
+/* PROJECT COVER */
 
 .project-cover {
     background: white;
@@ -223,12 +190,10 @@ section h2 {
 
 .cover-image {
     width: 100%;
-    height: 520px;
-
-    object-fit: cover;
-
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
     border-radius: 10px;
-
     display: block;
 }
 
@@ -240,14 +205,12 @@ section h2 {
 .cover-content h1 {
     font-size: 3rem;
     line-height: 1.15;
-
     margin: 10px 0;
 }
 
 .cover-content h2 {
     font-size: 1.4rem;
     font-weight: 500;
-
     margin-top: 0;
     margin-bottom: 20px;
 }
@@ -258,66 +221,46 @@ section h2 {
 }
 
 
-/* =========================
-   PROJECT DIAGRAMS / CODE
-   ========================= */
+/* CODE / DIAGRAM BLOCKS */
 
 pre {
     background: #eeeeee;
-
     padding: 25px;
-
     overflow-x: auto;
-
     border-radius: 8px;
-
     line-height: 1.5;
 }
 
 
-/* =========================
-   PROJECT ACTION BUTTONS
-   ========================= */
+/* PROJECT ACTIONS */
 
 .project-actions {
     margin-top: 25px;
 }
 
 
-/* =========================
-   PROJECT VIDEO
-   ========================= */
+/* PROJECT VIDEO */
 
 .project-video {
     width: 100%;
     max-width: 800px;
-
     display: block;
-
     margin-top: 25px;
-
     border-radius: 8px;
 }
 
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 
 footer {
     padding: 30px 8%;
-
     border-top: 1px solid #ddd;
-
     background: white;
-
     font-size: 0.9rem;
 }
 
 
-/* =========================
-   MOBILE
-   ========================= */
+/* MOBILE */
 
 @media (max-width: 900px) {
 
@@ -347,10 +290,6 @@ footer {
     nav a {
         margin-left: 0;
         margin-right: 15px;
-    }
-
-    .cover-image {
-        height: 320px;
     }
 
     .cover-content h1 {
