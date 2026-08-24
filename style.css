@@ -115,7 +115,7 @@ section h2 {
 }
 
 
-/* PROJECT CARDS */
+/* HOMEPAGE PROJECT CARDS */
 
 .projects-grid {
     display: grid;
@@ -159,7 +159,7 @@ section h2 {
 }
 
 
-/* ABOUT */
+/* ALTERNATING SECTIONS */
 
 .about {
     background: white;
@@ -185,7 +185,7 @@ section h2 {
 
 .project-cover {
     background: white;
-    padding: 40px 8% 70px;
+    padding: 40px 8% 50px;
 }
 
 .cover-image {
@@ -221,7 +221,27 @@ section h2 {
 }
 
 
-/* CODE / DIAGRAM BLOCKS */
+/* PROJECT BUTTONS */
+
+.project-actions {
+    margin-top: 25px;
+}
+
+
+/* DEMO VIDEO */
+
+.project-video {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin-top: 25px;
+    border-radius: 10px;
+    background: black;
+}
+
+
+/* CODE AND DIAGRAM BLOCKS */
 
 pre {
     background: #eeeeee;
@@ -231,22 +251,21 @@ pre {
     line-height: 1.5;
 }
 
-
-/* PROJECT ACTIONS */
-
-.project-actions {
-    margin-top: 25px;
+code {
+    font-family: "Courier New", Courier, monospace;
 }
 
 
-/* PROJECT VIDEO */
+/* FULL CODE DROPDOWN */
 
-.project-video {
-    width: 100%;
-    max-width: 800px;
-    display: block;
-    margin-top: 25px;
-    border-radius: 8px;
+details {
+    margin-top: 20px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
 
@@ -294,5 +313,9 @@ footer {
 
     .cover-content h1 {
         font-size: 2.3rem;
+    }
+
+    .project-video {
+        max-width: 100%;
     }
 }
