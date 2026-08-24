@@ -1,5 +1,13 @@
+/* =========================
+   GLOBAL
+   ========================= */
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -10,15 +18,23 @@ body {
     line-height: 1.6;
 }
 
+
+/* =========================
+   HEADER / NAVIGATION
+   ========================= */
+
 header {
     background: white;
     border-bottom: 1px solid #ddd;
     padding: 18px 8%;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 header h1 {
@@ -36,6 +52,11 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+
+/* =========================
+   HOMEPAGE HERO
+   ========================= */
 
 .hero {
     min-height: 70vh;
@@ -72,14 +93,24 @@ nav a:hover {
     max-width: 650px;
 }
 
+
+/* =========================
+   BUTTONS
+   ========================= */
+
 .button {
     display: inline-block;
+
     margin-top: 15px;
     margin-right: 10px;
+
     padding: 12px 18px;
+
     border: 1px solid #1f1f1f;
+
     text-decoration: none;
     color: #1f1f1f;
+
     font-weight: 700;
 }
 
@@ -87,6 +118,11 @@ nav a:hover {
     background: #1f1f1f;
     color: white;
 }
+
+
+/* =========================
+   GENERAL SECTIONS
+   ========================= */
 
 section {
     padding: 70px 8%;
@@ -97,6 +133,11 @@ section h2 {
     margin-bottom: 30px;
 }
 
+
+/* =========================
+   PROJECT CARDS
+   ========================= */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -106,8 +147,11 @@ section h2 {
 .project-card {
     background: white;
     border: 1px solid #ddd;
+
     padding: 25px;
+
     min-height: 310px;
+
     display: flex;
     flex-direction: column;
 }
@@ -129,6 +173,7 @@ section h2 {
 
 .project-card a {
     margin-top: 15px;
+
     text-decoration: none;
     font-weight: 700;
     color: #1f1f1f;
@@ -137,6 +182,11 @@ section h2 {
 .project-card a:hover {
     text-decoration: underline;
 }
+
+
+/* =========================
+   ABOUT
+   ========================= */
 
 .about {
     background: white;
@@ -147,23 +197,138 @@ section h2 {
     font-size: 1.05rem;
 }
 
+
+/* =========================
+   CONTACT
+   ========================= */
+
 .contact-links a {
     margin-right: 18px;
+
     text-decoration: none;
     color: #1f1f1f;
+
     font-weight: 700;
 }
 
+
+/* =========================
+   PROJECT COVER
+   ========================= */
+
+.project-cover {
+    background: white;
+    padding: 40px 8% 70px;
+}
+
+.cover-image {
+    width: 100%;
+    height: 520px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    display: block;
+}
+
+.cover-content {
+    max-width: 900px;
+    margin-top: 35px;
+}
+
+.cover-content h1 {
+    font-size: 3rem;
+    line-height: 1.15;
+
+    margin: 10px 0;
+}
+
+.cover-content h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.cover-content p {
+    font-size: 1.05rem;
+    max-width: 800px;
+}
+
+
+/* =========================
+   PROJECT DIAGRAMS / CODE
+   ========================= */
+
+pre {
+    background: #eeeeee;
+
+    padding: 25px;
+
+    overflow-x: auto;
+
+    border-radius: 8px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   PROJECT ACTION BUTTONS
+   ========================= */
+
+.project-actions {
+    margin-top: 25px;
+}
+
+
+/* =========================
+   PROJECT VIDEO
+   ========================= */
+
+.project-video {
+    width: 100%;
+    max-width: 800px;
+
+    display: block;
+
+    margin-top: 25px;
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
 footer {
     padding: 30px 8%;
+
     border-top: 1px solid #ddd;
+
     background: white;
+
     font-size: 0.9rem;
 }
 
+
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 900px) {
+
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
     }
 
     .hero h2 {
@@ -183,66 +348,7 @@ footer {
         margin-left: 0;
         margin-right: 15px;
     }
-}
-.project-hero-image {
-    width: 45%;
-    display: flex;
-    justify-content: center;
-}
 
-.project-hero-image img {
-    width: 100%;
-    max-width: 550px;
-    max-height: 600px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-@media (max-width: 900px) {
-    .project-hero-image {
-        width: 100%;
-        margin-top: 35px;
-    }
-
-    .project-hero-image img {
-        max-width: 100%;
-    }
-}
-.project-cover {
-    background: white;
-    padding: 40px 8% 70px;
-}
-
-.cover-image {
-    width: 100%;
-    height: 520px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-}
-
-.cover-content {
-    max-width: 900px;
-    margin-top: 35px;
-}
-
-.cover-content h1 {
-    font-size: 3rem;
-    margin: 10px 0;
-}
-
-.cover-content h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.cover-content p {
-    font-size: 1.05rem;
-    max-width: 800px;
-}
-
-@media (max-width: 900px) {
     .cover-image {
         height: 320px;
     }
