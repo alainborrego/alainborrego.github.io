@@ -12,6 +12,8 @@
 
 <body>
 
+    <!-- HEADER -->
+
     <header>
 
         <h1>Alain Borrego</h1>
@@ -25,6 +27,8 @@
 
     </header>
 
+
+    <!-- PROJECT COVER -->
 
     <section class="project-cover">
 
@@ -55,25 +59,62 @@
                 controls a DC fan through an L293D motor driver.
             </p>
 
-        <div class="project-actions">
 
-            <a class="button"
-               href="https://github.com/alainborrego/temperature-controlled-cooling-system"
-               target="_blank">
-                View Code
-            </a>
+            <!-- PROJECT BUTTONS -->
 
-            <a class="button"
-               href="#demo">
-                Watch Demo
-            </a>
+            <div class="project-actions">
+
+                <a
+                    class="button"
+                    href="https://github.com/alainborrego/temperature-controlled-cooling-system"
+                    target="_blank"
+                >
+                    View Code
+                </a>
+
+                <a
+                    class="button"
+                    href="#demo"
+                >
+                    Watch Demo
+                </a>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <section>
+    <!-- DEMO -->
+
+    <section id="demo">
+
+        <h2>Project Demo</h2>
+
+        <p>
+            The system monitors temperature in real time and automatically
+            controls the cooling fan while displaying the current temperature
+            and fan status on the LCD.
+        </p>
+
+        <video controls class="project-video">
+
+            <source
+                src="temperature-control-demo.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support the video tag.
+
+        </video>
+
+    </section>
+
+
+    <!-- PROJECT OVERVIEW -->
+
+    <section class="about">
 
         <h2>Project Overview</h2>
 
@@ -92,7 +133,9 @@
     </section>
 
 
-    <section class="about">
+    <!-- SYSTEM ARCHITECTURE -->
+
+    <section>
 
         <h2>System Architecture</h2>
 
@@ -129,7 +172,9 @@ Arduino ─────────────→ 16x2 LCD
     </section>
 
 
-    <section>
+    <!-- HARDWARE -->
+
+    <section class="about">
 
         <h2>Hardware</h2>
 
@@ -143,7 +188,9 @@ Arduino ─────────────→ 16x2 LCD
     </section>
 
 
-    <section class="about">
+    <!-- SOFTWARE -->
+
+    <section>
 
         <h2>Software and Control Logic</h2>
 
@@ -182,7 +229,9 @@ Temperature ≤ 27°C
     </section>
 
 
-    <section>
+    <!-- ENGINEERING CHALLENGE -->
+
+    <section class="about">
 
         <h2>Engineering Challenge: LCD Interference</h2>
 
@@ -208,7 +257,9 @@ Temperature ≤ 27°C
     </section>
 
 
-    <section class="about">
+    <!-- RESULT -->
+
+    <section>
 
         <h2>Result</h2>
 
@@ -228,7 +279,9 @@ Temperature ≤ 27°C
     </section>
 
 
-    <section>
+    <!-- FUTURE IMPROVEMENTS -->
+
+    <section class="about">
 
         <h2>Future Improvements</h2>
 
@@ -241,17 +294,7 @@ Temperature ≤ 27°C
     </section>
 
 
-    <section class="about">
-
-        <h2>Source Code</h2>
-
-        <p>
-            The Arduino source code and additional project documentation will be
-            available through the project's GitHub repository.
-        </p>
-
-    </section>
-
+    <!-- FOOTER -->
 
     <footer>
         © 2026 Alain Borrego
