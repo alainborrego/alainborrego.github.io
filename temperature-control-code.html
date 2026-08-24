@@ -25,6 +25,8 @@
     </header>
 
 
+    <!-- INTRO -->
+
     <section class="project-cover">
 
         <div class="cover-content">
@@ -33,9 +35,7 @@
                 Arduino C++ • Embedded Programming
             </p>
 
-            <h1>
-                Code & Implementation
-            </h1>
+            <h1>Code & Implementation</h1>
 
             <h2>
                 Temperature-Controlled Cooling System
@@ -44,8 +44,8 @@
             <p>
                 The program is divided into several tasks: defining the hardware,
                 reading the thermistor, converting the sensor reading into temperature,
-                controlling the fan using hysteresis, and updating the LCD with real-time
-                system information.
+                controlling the fan using hysteresis, and updating the LCD with
+                real-time system information.
             </p>
 
             <a class="button" href="temperature-control.html">
@@ -57,7 +57,7 @@
     </section>
 
 
-    <!-- HARDWARE CONFIGURATION -->
+    <!-- CONFIGURATION -->
 
     <section>
 
@@ -65,13 +65,10 @@
 
         <p>
             The first section defines the electrical characteristics of the thermistor
-            circuit, the Arduino pins being used, the fan temperature thresholds, and
-            the LCD connections.
+            circuit, Arduino pin assignments, fan-control thresholds, and LCD connections.
         </p>
 
         <pre><code>#include &lt;LiquidCrystal.h&gt;
-
-// ---------- Thermistor ----------
 
 const float referenceVoltage = 5.0;
 const int maxADC = 1023;
@@ -80,41 +77,35 @@ const float nominalResistance = 10000.0;
 const float nominalTemperature = 25.0;
 const float beta = 3950.0;
 
-// ---------- Pins ----------
-
 const int thermistorPin = A0;
 const int fanPin = 9;
-
-// ---------- Fan Control ----------
 
 bool fanOn = false;
 
 const float fanOnThreshold = 28.0;
 const float fanOffThreshold = 27.0;
 
-// ---------- LCD ----------
-
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);</code></pre>
 
         <p>
-            Using named constants makes the program easier to read and allows hardware
-            values such as resistor resistance, pin assignments, and temperature
-            thresholds to be changed from one location.
+            Named constants make the program easier to understand and allow hardware
+            values, pin assignments, and temperature thresholds to be changed from
+            one location.
         </p>
 
     </section>
 
 
-    <!-- TEMPERATURE FUNCTION -->
+    <!-- TEMPERATURE CONVERSION -->
 
     <section class="about">
 
-        <h2>2. Temperature Conversion Function</h2>
+        <h2>2. Temperature Conversion</h2>
 
         <p>
-            The Arduino cannot directly measure the resistance of the thermistor.
-            Instead, it measures the voltage produced by the thermistor voltage divider.
-            This function converts that analog reading into temperature in degrees Celsius.
+            The Arduino measures the voltage produced by the thermistor voltage divider.
+            This function converts that ADC measurement into voltage, thermistor
+            resistance, and finally temperature in degrees Celsius.
         </p>
 
         <pre><code>float convertToTemperature(int rawReading)
@@ -123,12 +114,15 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);</code></pre>
     float resistance;
     float temperature;
 
-    voltage = (rawReading * referenceVoltage) / maxADC;
+    voltage =
+        (rawReading * referenceVoltage) / maxADC;
 
     resistance =
-        fixedResistance * (referenceVoltage / voltage - 1.0);
+        fixedResistance *
+        (referenceVoltage / voltage - 1.0);
 
-    temperature = resistance / nominalResistance;
+    temperature =
+        resistance / nominalResistance;
 
     temperature = log(temperature);
 
@@ -137,16 +131,13 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);</code></pre>
     temperature +=
         1.0 / (nominalTemperature + 273.15);
 
-    temperature = 1.0 / temperature;
+    temperature =
+        1.0 / temperature;
 
     temperature -= 273.15;
 
     return temperature;
 }</code></pre>
-
-        <p>
-            The conversion follows this sequence:
-        </p>
 
         <pre>
 ADC Reading
@@ -157,9 +148,7 @@ Thermistor Resistance
      ↓
 Beta Equation
      ↓
-Temperature in Kelvin
-     ↓
-Temperature in Celsius
+Temperature
         </pre>
 
     </section>
@@ -173,8 +162,7 @@ Temperature in Celsius
 
         <p>
             The setup function runs once when the Arduino powers on. It configures
-            the motor-control pin as an output and initializes the 16-column,
-            2-row LCD.
+            the fan-control pin as an output and initializes the 16x2 LCD.
         </p>
 
         <pre><code>void setup()
@@ -187,26 +175,23 @@ Temperature in Celsius
     </section>
 
 
-    <!-- SENSOR READING -->
+    <!-- SENSOR -->
 
     <section class="about">
 
         <h2>4. Temperature Sensing</h2>
 
         <p>
-            Every pass through the main loop begins by reading the voltage divider
-            through analog pin A0.
+            Every pass through the main loop begins by reading the thermistor voltage
+            through analog pin A0. The reading is then passed into the temperature
+            conversion function.
         </p>
 
-        <pre><code>int rawReading = analogRead(thermistorPin);
+        <pre><code>int rawReading =
+    analogRead(thermistorPin);
 
 float temperature =
     convertToTemperature(rawReading);</code></pre>
-
-        <p>
-            The raw ADC value is passed into the conversion function, which returns
-            the current temperature in Celsius.
-        </p>
 
     </section>
 
@@ -218,8 +203,8 @@ float temperature =
         <h2>5. Real-Time LCD Feedback</h2>
 
         <p>
-            The first row of the LCD displays the current measured temperature.
-            The value is displayed with one decimal place.
+            The first LCD row displays the current measured temperature with
+            one decimal place.
         </p>
 
         <pre><code>lcd.setCursor(0, 0);
@@ -231,7 +216,7 @@ lcd.print(temperature, 1);
 lcd.print(" C   ");</code></pre>
 
         <p>
-            The second row communicates whether the fan is currently active.
+            The second row displays whether the fan is currently on or off.
         </p>
 
         <pre><code>lcd.setCursor(0, 1);
@@ -255,8 +240,8 @@ else
         <h2>6. Fan Control & Hysteresis</h2>
 
         <p>
-            Instead of using one temperature threshold for both turning the fan on
-            and turning it off, the controller uses two thresholds.
+            The controller uses separate activation and deactivation temperatures
+            rather than one threshold.
         </p>
 
         <pre><code>if (temperature &gt;= fanOnThreshold)
@@ -269,50 +254,34 @@ else if (temperature &lt;= fanOffThreshold)
 }</code></pre>
 
         <p>
-            The fan turns on at 28°C and remains on until the temperature decreases
-            to 27°C. Between those temperatures, the program keeps the previous fan
-            state.
+            At 28°C or higher, the fan turns on. At 27°C or lower, it turns off.
+            Between 27°C and 28°C, the program maintains the previous fan state.
         </p>
 
-        <pre>
-28°C or higher
-      ↓
-    FAN ON
-
-27°C – 28°C
-      ↓
-Keep previous state
-
-27°C or lower
-      ↓
-    FAN OFF
-        </pre>
-
         <p>
-            This hysteresis prevents the motor from rapidly switching on and off if
-            the measured temperature fluctuates around a single threshold.
+            This hysteresis prevents rapid switching if the measured temperature
+            fluctuates near the activation point.
         </p>
 
     </section>
 
 
-    <!-- MOTOR OUTPUT -->
+    <!-- MOTOR -->
 
     <section>
 
         <h2>7. Motor Driver Command</h2>
 
         <p>
-            Once the program determines the desired fan state, the Boolean value
-            is sent to Arduino digital pin 9.
+            After determining the desired fan state, the program sends that state
+            to Arduino digital pin 9.
         </p>
 
         <pre><code>digitalWrite(fanPin, fanOn);</code></pre>
 
         <p>
-            Pin 9 controls the L293D motor driver, which then switches the DC motor.
-            This prevents the Arduino digital pin from directly supplying the motor's
-            operating current.
+            Pin 9 controls the L293D motor driver, allowing the Arduino to command
+            the DC motor without directly supplying the motor's operating current.
         </p>
 
     </section>
@@ -325,9 +294,8 @@ Keep previous state
         <h2>8. Main Program Loop</h2>
 
         <p>
-            Together, the main loop continuously reads the sensor, converts the
-            measurement, updates the display, determines the fan state, and commands
-            the motor driver.
+            The complete loop continuously reads the sensor, calculates temperature,
+            updates the LCD, determines the fan state, and commands the motor driver.
         </p>
 
         <pre><code>void loop()
@@ -338,6 +306,7 @@ Keep previous state
         convertToTemperature(rawReading);
 
     lcd.setCursor(0, 0);
+
     lcd.print("Temp: ");
     lcd.print(temperature, 1);
     lcd.print(" C   ");
@@ -368,14 +337,14 @@ Keep previous state
     </section>
 
 
-    <!-- FULL CODE -->
+    <!-- FULL SOURCE -->
 
     <section>
 
         <h2>Full Source Code</h2>
 
         <p>
-            The complete Arduino program used in the final prototype is shown below.
+            The complete Arduino program used in the final prototype is available below.
         </p>
 
         <details>
@@ -441,8 +410,7 @@ float convertToTemperature(int rawReading)
     temperature /= beta;
 
     temperature +=
-        1.0 /
-        (nominalTemperature + 273.15);
+        1.0 / (nominalTemperature + 273.15);
 
     temperature =
         1.0 / temperature;
@@ -491,7 +459,6 @@ void loop()
     {
         fanOn = true;
     }
-
     else if (temperature &lt;= fanOffThreshold)
     {
         fanOn = false;
@@ -505,7 +472,6 @@ void loop()
     {
         lcd.print("Fan: ON ");
     }
-
     else
     {
         lcd.print("Fan: OFF");
