@@ -208,3 +208,46 @@ footer {
         max-width: 100%;
     }
 }
+.project-cover {
+    background: white;
+    padding: 40px 8% 70px;
+}
+
+.cover-image {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.cover-content {
+    max-width: 900px;
+    margin-top: 35px;
+}
+
+.cover-content h1 {
+    font-size: 3rem;
+    margin: 10px 0;
+}
+
+.cover-content h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.cover-content p {
+    font-size: 1.05rem;
+    max-width: 800px;
+}
+
+@media (max-width: 900px) {
+    .cover-image {
+        height: 320px;
+    }
+
+    .cover-content h1 {
+        font-size: 2.3rem;
+    }
+}
