@@ -12,8 +12,6 @@
 
 <body>
 
-    <!-- HEADER -->
-
     <header>
 
         <h1>Alain Borrego</h1>
@@ -28,7 +26,7 @@
     </header>
 
 
-    <!-- PROJECT COVER -->
+    <!-- COVER -->
 
     <section class="project-cover">
 
@@ -59,9 +57,6 @@
                 controls a DC fan through an L293D motor driver.
             </p>
 
-
-            <!-- PROJECT BUTTONS -->
-
             <div class="project-actions">
 
                 <a
@@ -75,7 +70,7 @@
                     class="button"
                     href="#demo"
                 >
-                    Watch Demo
+                    Watch Demo ↓
                 </a>
 
             </div>
@@ -92,15 +87,15 @@
         <h2>Project Demo</h2>
 
         <p>
-            The system monitors temperature in real time and automatically
-            controls the cooling fan while displaying the current temperature
-            and fan status on the LCD.
+            The demonstration shows the system monitoring temperature in real time,
+            displaying the current temperature and fan state on the LCD, and
+            automatically controlling the DC fan.
         </p>
 
         <video controls class="project-video">
 
             <source
-                src="temperature-control-demo.mp4"
+                src="IMG_0704.mp4"
                 type="video/mp4"
             >
 
@@ -111,7 +106,7 @@
     </section>
 
 
-    <!-- PROJECT OVERVIEW -->
+    <!-- OVERVIEW -->
 
     <section class="about">
 
@@ -140,8 +135,8 @@
 
         <p>
             The thermistor forms a voltage divider whose output is measured by the
-            Arduino's analog input. The ADC reading is converted to voltage, thermistor
-            resistance, and finally temperature in degrees Celsius.
+            Arduino's analog input. The ADC reading is converted to voltage,
+            thermistor resistance, and finally temperature in degrees Celsius.
         </p>
 
         <pre>
@@ -208,11 +203,9 @@ Temperature ≥ 28°C
         ↓
       Fan ON
 
-
-27°C < Temperature < 28°C
+27°C &lt; Temperature &lt; 28°C
         ↓
 Keep previous fan state
-
 
 Temperature ≤ 27°C
         ↓
@@ -292,8 +285,6 @@ Temperature ≤ 27°C
 
     </section>
 
-
-    <!-- FOOTER -->
 
     <footer>
         © 2026 Alain Borrego
